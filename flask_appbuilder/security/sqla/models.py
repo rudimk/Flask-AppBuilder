@@ -96,10 +96,10 @@ class User(Model):
         return Column(Integer, ForeignKey('ab_user.id'),
                       default=self.get_user_id, nullable=True)
 
-    created_by = relationship("User", backref=backref("created", uselist=True),
-                              remote_side=[id], primaryjoin='User.created_by_fk == User.id', uselist=False)
-    changed_by = relationship("User", backref=backref("changed", uselist=True),
-                              remote_side=[id], primaryjoin='User.changed_by_fk == User.id', uselist=False)
+    #created_by = relationship("User", backref=backref("created", uselist=True),
+    #                          remote_side=[id], primaryjoin='User.created_by_fk == User.id', uselist=False)
+    #changed_by = relationship("User", backref=backref("changed", uselist=True),
+    #                          remote_side=[id], primaryjoin='User.changed_by_fk == User.id', uselist=False)
 
     @classmethod
     def get_user_id(cls):
