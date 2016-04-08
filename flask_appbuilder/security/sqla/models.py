@@ -85,7 +85,7 @@ class User(Model):
     roles = relationship('Role', secondary=assoc_user_role, backref='user')
     created_on = Column(DateTime, default=datetime.datetime.now, nullable=True)
     changed_on = Column(DateTime, default=datetime.datetime.now, nullable=True)
-
+    '''
     @declared_attr
     def created_by_fk(self):
         return Column(Integer, ForeignKey('ab_user.id'),
@@ -95,11 +95,11 @@ class User(Model):
     def changed_by_fk(self):
         return Column(Integer, ForeignKey('ab_user.id'),
                       default=self.get_user_id, nullable=True)
-
-    #created_by = relationship("User", backref=backref("created", uselist=True),
-    #                          remote_side=[id], primaryjoin='User.created_by_fk == User.id', uselist=False)
-    #changed_by = relationship("User", backref=backref("changed", uselist=True),
-    #                          remote_side=[id], primaryjoin='User.changed_by_fk == User.id', uselist=False)
+    '''
+    created_by = relationship("User", backref=backref("created", uselist=True),
+                              remote_side=[id], primaryjoin='User.created_by_fk == User.id', uselist=False)
+    changed_by = relationship("User", backref=backref("changed", uselist=True),
+                              remote_side=[id], primaryjoin='User.changed_by_fk == User.id', uselist=False)
 
     @classmethod
     def get_user_id(cls):
