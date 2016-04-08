@@ -12,7 +12,7 @@ _dont_audit = False
 class Permission(Model):
     __tablename__ = 'ab_permission'
     id = Column(Integer, Sequence('ab_permission_id_seq'), primary_key=True)
-    name = Column(String(100), unique=True, nullable=False)
+    name = Column(String(100), nullable=False)
 
     def __repr__(self):
         return self.name
@@ -21,7 +21,7 @@ class Permission(Model):
 class ViewMenu(Model):
     __tablename__ = 'ab_view_menu'
     id = Column(Integer, Sequence('ab_view_menu_id_seq'), primary_key=True)
-    name = Column(String(100), unique=True, nullable=False)
+    name = Column(String(100), nullable=False)
 
     def __eq__(self, other):
         return (isinstance(other, self.__class__)) and (self.name == other.name)
@@ -56,7 +56,7 @@ class Role(Model):
     __tablename__ = 'ab_role'
 
     id = Column(Integer, Sequence('ab_role_id_seq'), primary_key=True)
-    name = Column(String(64), unique=True, nullable=False)
+    name = Column(String(64), nullable=False)
     permissions = relationship('PermissionView', secondary=assoc_permissionview_role, backref='role')
 
     def __repr__(self):
@@ -132,7 +132,7 @@ class RegisterUser(Model):
     id = Column(Integer, Sequence('ab_register_user_id_seq'), primary_key=True)
     first_name = Column(String(64), nullable=False)
     last_name = Column(String(64), nullable=False)
-    username = Column(String(64), unique=True, nullable=False)
+    username = Column(String(64), nullable=False)
     password = Column(String(256))
     email = Column(String(64), nullable=False)
     registration_date = Column(DateTime, default=datetime.datetime.now, nullable=True)
