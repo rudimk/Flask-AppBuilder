@@ -77,7 +77,7 @@ class User(Model):
     last_name = Column(String(64), nullable=False)
     username = Column(String(64), unique=True, nullable=False)
     password = Column(String(256))
-    active = Column(Boolean)
+    #active = Column(Boolean)
     email = Column(String(64), unique=True, nullable=False)
     last_login = Column(DateTime)
     login_count = Column(Integer)
@@ -110,10 +110,10 @@ class User(Model):
 
     def is_authenticated(self):
         return True
-
+    '''
     def is_active(self):
         return self.active
-
+    '''
     def is_anonymous(self):
         return False
 
